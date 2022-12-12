@@ -21,8 +21,15 @@ dashboard.section.buttons.val = {
   dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
+
 local function footer()
-  return "chrisatmachine.com"
+	local datetime = os.date "\t %d-%m-%Y  %H:%M:%S"
+
+	-- Quote
+	local fortune = require "alpha.fortune"
+	local quote = table.concat(fortune(), "\n")
+
+	return datetime .. "\n" .. quote
 end
 
 dashboard.section.footer.val = footer()
